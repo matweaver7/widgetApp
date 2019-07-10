@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#55000000"
+    android:orientation="horizontal"
+    android:padding="@dimen/widget_margin">
+
+    <!--<com.google.android.material.textfield.TextInputLayout-->
+        <!--android:layout_width="250dp"-->
+        <!--android:layout_height="66dp">-->
+
+        <!--<com.google.android.material.textfield.TextInputEditText-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:hint="Fill Username"-->
+            <!--android:layout_marginRight="50dp"/>-->
+
+    <!--</com.google.android.material.textfield.TextInputLayout>-->
+
+    <TextView
+        android:id="@+id/userNameFilledIn"
+        android:layout_width="wrap_content"
+        android:minWidth="150dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="000"
+        android:textSize="@dimen/abc_text_size_large_material"
+        android:textStyle="bold"/>
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="120dp"
+        android:layout_margin="10dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/my_button"
+        android:text="Button" />
+</LinearLayout>
