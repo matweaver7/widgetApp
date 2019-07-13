@@ -23,7 +23,7 @@ import java.net.*;
  */
 public class mikeWidget extends AppWidgetProvider {
 
-
+    private String _name;
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         final int count = appWidgetIds.length;
@@ -33,6 +33,7 @@ public class mikeWidget extends AppWidgetProvider {
 
             SharedPreferences prefs = context.getSharedPreferences("mike_widget_pref", context.MODE_PRIVATE);
             String name = prefs.getString("username", "was not found");
+            _name = name;
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
                     R.layout.mike_widget);
@@ -42,7 +43,7 @@ public class mikeWidget extends AppWidgetProvider {
                 public void run(){
                     try {
                         Log.d("sentMessage", "thread execution works");
-                        sendRequest();
+                        sendRequest(mikeWidget.this.getName());
                     } catch (Exception e){
                         e.printStackTrace();
                     }
@@ -59,13 +60,16 @@ public class mikeWidget extends AppWidgetProvider {
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
         }
     }
+    String getName(){
+        return _name;
+    }
 
 
-    private void sendRequest() {
+    private void sendRequest(String name) {
 
         HttpURLConnection client = null;
         try {
-            URL url = new URL("https://httpbin.org/post");
+            URL url = new URL("https://httpbin.org/post" + name );
             client = (HttpURLConnection) url.openConnection();
             client.setRequestMethod("POST");
             client.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -114,9 +118,6 @@ public class mikeWidget extends AppWidgetProvider {
             if(client != null) // Make sure the connection is not null.
                 client.disconnect();
         }
-
-
-
     }
 }
 
