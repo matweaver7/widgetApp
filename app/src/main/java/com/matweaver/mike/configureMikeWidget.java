@@ -34,11 +34,6 @@ public class configureMikeWidget extends Activity {
                 EditText mEdit = findViewById(R.id.configUsernameText);
                 username = mEdit.getText().toString();
 
-
-
-
-
-
                 imm.hideSoftInputFromWindow(mainLayout.getWindowToken(), 0);
 
                 int duration = Toast.LENGTH_SHORT;
